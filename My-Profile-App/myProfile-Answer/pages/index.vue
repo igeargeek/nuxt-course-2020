@@ -1,22 +1,41 @@
 <template>
-  <b-container>
-    <h1>My profile</h1>
-    <formInput @submitForm="submitForm"/>
+  <b-container class="container">
+    <b-card v-if="!displayValue" class="card-container">
+      <h1 class="title">My profile</h1>
+       <h2 class="subtitle">This is a simple application</h2>
+      <formInput  @submitForm="submitForm"/>
+    </b-card>
+    <b-card  v-else >
+      <formDisplay :profile="profile" @onBack="onBack" />
+    </b-card>
+    
   </b-container>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
 import formInput from '~/components/formInput'
+import formDisplay from '~/components/formDisplay'
 
 export default {
   components: {
     Logo,
-    formInput
+    formInput,
+    formDisplay
+  },
+  data() {
+    return {
+      displayValue: false,
+      profile: {}
+    }
   },
   methods: {
     submitForm(value) {
-      console.log('value: ', value);
+      this.displayValue = !this.displayValue 
+      this.profile = value
+    },
+    onBack() {
+      this.displayValue = !this.displayValue 
     }
   }
 
@@ -24,14 +43,18 @@ export default {
 </script>
 
 <style>
-/* .container {
+body {
+  background-color: #35495e
+}
+
+.container {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-} */
+}
 
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
@@ -53,5 +76,9 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+.card-container {
+  min-width: 500px;
 }
 </style>
