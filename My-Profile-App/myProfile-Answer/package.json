@@ -1,0 +1,19 @@
+{
+  "name": "myProfile-Answer",
+  "version": "1.0.0",
+  "description": "My scrumtrulescent Nuxt.js project",
+  "author": "Arthorn kittinukul",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/bootstrap-vue": "^2.0.4",
+    "nuxt": "^2.0.0",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {}
+}
