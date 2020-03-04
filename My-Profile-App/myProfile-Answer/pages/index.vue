@@ -1,15 +1,21 @@
 <template>
-  <b-container class="container">
-    <b-card v-if="!displayValue" class="card-container">
+  <v-container class="container">
+    <v-card 
+    v-if="!displayValue"  
+    class="card-container"
+    outlined>
       <h1 class="title">My profile</h1>
        <h2 class="subtitle">This is a simple application</h2>
       <formInput  @submitForm="submitForm"/>
-    </b-card>
-    <b-card  v-else >
+    </v-card>
+    <v-card  
+    v-else 
+    class="card-container"
+    outlined>
       <formDisplay :profile="profile" @onBack="onBack" />
-    </b-card>
+    </v-card>
     
-  </b-container>
+  </v-container>
 </template>
 
 <script>
@@ -79,6 +85,8 @@ body {
 }
 
 .card-container {
-  min-width: 500px;
+  min-width: 800px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 </style>

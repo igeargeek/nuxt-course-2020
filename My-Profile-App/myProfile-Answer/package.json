@@ -1,19 +1,25 @@
 {
   "name": "myProfile-Answer",
   "version": "1.0.0",
+  "private": true,
   "description": "My scrumtrulescent Nuxt.js project",
   "author": "Arthorn kittinukul",
-  "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "dev": "nuxt",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
   },
   "dependencies": {
-    "@nuxtjs/bootstrap-vue": "^2.0.4",
+    "@nuxtjs/vuetify": "^1.11.0",
     "nuxt": "^2.0.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuetify": "^2.2.11"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "^2.0.5",
+    "vuetify-loader": "^1.3.0"
+  }
 }

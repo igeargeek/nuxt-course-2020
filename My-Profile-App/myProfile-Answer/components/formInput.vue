@@ -1,33 +1,40 @@
 <template>
   <div>
-    <b-form @submit="onSubmit">
-    <b-row>
-      <b-col>
-        <b-form-input class="mt-4" type="text" v-model="fullName" placeholder="Enter your name" required></b-form-input>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-form-input class="mt-4" type="email" v-model="email" placeholder="Enter your email" required></b-form-input>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-form-textarea class="mt-4" type="text" v-model="description" placeholder="Enter description" required/>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-button class="mt-4" type="submit" variant="outline-primary">Submit</b-button>
-        <b-button class="mt-4" type="reset" variant="outline-danger" @click="onClear">Clear</b-button>
-      </b-col>
-    </b-row>
-    </b-form>
+    <v-form>
+    <v-row>
+      <v-col>
+        <inputComponent v-model="fullName" placeholder="Enter your name" isRequired></inputComponent>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <inputComponent v-model="email" placeholder="Enter your email" isRequired></inputComponent>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <inputComponent v-model="description" placeholder="Enter description" isRequired></inputComponent>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <buttonComponent @onClick="onSubmit" text="Submit" color="btn-primary"></buttonComponent>
+        <buttonComponent  @onClick="onClear" text="Clear" color="btn-error"></buttonComponent>
+      </v-col>
+    </v-row>
+    </v-form>
   </div>
 </template>
 <script>
+import buttonComponent from './buttonComponent'
+import inputComponent from './inputComponent'
+
 export default {
   name: 'formInput',
+  components: {
+    buttonComponent,
+    inputComponent
+  },
   data() {
     return {
       fullName: '',
