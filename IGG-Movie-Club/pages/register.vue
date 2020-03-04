@@ -1,43 +1,92 @@
 <template>
-  <b-container fluid class="register-page">
-    <b-row class="content">
-      <b-col cols="12" sm="8">
-        <b-card no-body class="overflow-hidden">
-          <b-row no-gutters>
-            <b-col md="4">
-              <b-card-img src="/images/logo-igg.png" class="rounded-0"></b-card-img>
-            </b-col>
-            <b-col md="8">
-              <b-card-body title="Horizontal Card">
-                <b-card-text>
+  <v-content>
+    <v-container class="fill-height" fluid>
+      <v-row align="center" justify="center">
+        <v-col cols="12" sm="8" md="4">
+          <ValidationObserver v-slot="{ validate }">
+            <form @submit.prevent="onSubmit(validate)">
+              <v-card class="elevation-12">
+                <v-toolbar color="primary" dark flat>
+                  <v-toolbar-title>Register</v-toolbar-title>
+                </v-toolbar>
+                <v-card-text>
+                  <TextInputWithValidate
+                    v-model="fullname"
+                    name="fullname"
+                    label="Fullname"
+                    rules="required"
+                  />
+                  <TextInputWithValidate
+                    v-model="username"
+                    name="username"
+                    label="Username"
+                    rules="required|username"
+                  />
                   <TextInputWithValidate
                     v-model="password"
-                    name="รหัสผ่าน"
-                    label="รหัสผ่าน"
-                    rules="required|password"
+                    name="password"
+                    label="Password"
+                    rules="required"
                   />
-                </b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer />
+                  <v-col cols="12" class="text-sm-right">
+                    <v-btn color="primary" outlined @click="$router.push('/login')">Cancel</v-btn>
+                    <SaveButton :loading="loading.submit">Register</SaveButton>
+                  </v-col>
+                </v-card-actions>
+              </v-card>
+            </form>
+          </ValidationObserver>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
+import { ValidationObserver } from "vee-validate";
 import { TextInputWithValidate } from "~/components/inputs";
+import { SaveButton } from "~/components/buttons";
 
 export default {
-  // layout: "blank",
+  layout: "blank",
   components: {
-    TextInputWithValidate
+    TextInputWithValidate,
+    ValidationObserver,
+    SaveButton
   },
   data() {
     return {
+      loading: { submit: false },
+      fullname: "",
+      username: "",
       password: ""
     };
+  },
+  methods: {
+    onSubmit(validate) {
+      validate().then(success => {
+        if (success) {
+          this.loading.submit = true;
+          const body = {
+            fullname: this.fullname,
+            username: this.username,
+            password: this.password
+          };
+          this.$axios
+            .post("/users/register", body)
+            .then(() => {
+              this.$router.push("/login");
+            })
+            .catch(error => {
+              this.$alert("Something has wrong", "danger");
+              console.log("error");
+            });
+        }
+      });
+    }
   }
 };
 </script>

@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <v-app dark>
     <nuxt />
-  </div>
+  </v-app>
 </template>
+
+<script>
+export default {
+
+}
+</script>

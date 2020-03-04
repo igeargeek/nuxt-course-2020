@@ -4,12 +4,12 @@ import { required } from 'vee-validate/dist/rules'
 export default () => {
   extend('required', {
     ...required,
-    message: 'กรุณากรอก{_field_}',
+    message: 'Please fill {_field_}',
   })
 
-  extend('password', {
+  extend('username', {
     validate(value) {
-      const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
+      const regex = /^[a-zA-Z0-9]{4,20}$/
       let isValid = false
       if (`${value}`.match(regex)) {
         isValid = true
@@ -17,6 +17,6 @@ export default () => {
       return isValid
     },
 
-    message: '{_field_}ไม่ถูกต้อง',
+    message: '{_field_} must contain a-z A-Z 0-9 and must be 4-20 characters',
   })
 }

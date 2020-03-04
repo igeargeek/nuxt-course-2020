@@ -1,15 +1,10 @@
 <template>
-  <ValidationProvider v-slot="{ errors, valid, touched }" :name="name" :rules="rules">
-    {{errors.length}}
-    <label :for="name">{{label}}</label>
-    <b-form-input
-      :id="name"
+  <ValidationProvider v-slot="{ errors }" :name="name" :rules="rules">
+    <v-text-field
       v-model="innerValue"
-      :state="touched ? valid : null"
-      :placeholder="placeholder"
-      trim
-    ></b-form-input>
-    <b-form-invalid-feedback v-if="errors.length > 0">{{errors[0]}}</b-form-invalid-feedback>
+      :label="label"
+      :error-messages="errors"
+    ></v-text-field>
   </ValidationProvider>
 </template>
 

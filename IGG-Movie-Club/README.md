@@ -1,6 +1,6 @@
 # IGG-Movie-Club
 
-> My groundbreaking Nuxt.js project
+> My excellent Nuxt.js project
 
 ## Build Setup
 
