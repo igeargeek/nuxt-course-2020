@@ -1,16 +1,29 @@
 <template>
   <v-app dark>
     <Snackbar />
+    <HeaderBar />
     <nuxt />
   </v-app>
 </template>
 
 <script>
 import { Snackbar } from "~/components/alerts";
+import { HeaderBar } from "~/components/headers";
 
 export default {
   components: {
-    Snackbar
+    Snackbar,
+    HeaderBar
+  },
+  mounted() {
+    this.getUserInfo();
+  },
+  methods: {
+    getUserInfo() {
+      this.$api.get("/users/payload").then(res => {
+        this.$store.commit("user", res.data.data);
+      });
+    }
   }
-}
+};
 </script>

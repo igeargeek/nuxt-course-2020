@@ -27,8 +27,10 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer />
-                  <v-col cols="12" class="text-sm-right">
-                    <v-btn color="primary" outlined @click="$router.push('/login')">Cancel</v-btn>
+                  <v-col cols="6" class="text-sm-left">
+                    <v-btn color="primary" outlined @click="$router.push('/login')">Login</v-btn>
+                  </v-col>
+                  <v-col cols="6" class="text-sm-right">
                     <SaveButton :loading="loading.submit">Register</SaveButton>
                   </v-col>
                 </v-card-actions>
@@ -63,7 +65,6 @@ export default {
   },
   methods: {
     onSubmit(validate) {
-      this.$bus.$emit("alert", "error", "Something has wrong");
       validate().then(success => {
         if (success) {
           this.loading.submit = true;
