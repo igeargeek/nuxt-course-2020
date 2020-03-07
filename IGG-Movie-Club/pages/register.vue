@@ -10,12 +10,7 @@
                   <v-toolbar-title>Register</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                  <TextInputWithValidate
-                    v-model="fullname"
-                    name="fullname"
-                    label="Fullname"
-                    rules="required"
-                  />
+                  <TextInputWithValidate v-model="name" name="name" label="Name" rules="required" />
                   <TextInputWithValidate
                     v-model="username"
                     name="username"
@@ -27,6 +22,7 @@
                     name="password"
                     label="Password"
                     rules="required"
+                    type="password"
                   />
                 </v-card-text>
                 <v-card-actions>
@@ -60,29 +56,33 @@ export default {
   data() {
     return {
       loading: { submit: false },
-      fullname: "",
+      name: "",
       username: "",
       password: ""
     };
   },
   methods: {
     onSubmit(validate) {
+      this.$bus.$emit("alert", "error", "Something has wrong");
       validate().then(success => {
         if (success) {
           this.loading.submit = true;
           const body = {
-            fullname: this.fullname,
+            name: this.name,
             username: this.username,
             password: this.password
           };
-          this.$axios
+          this.$api
             .post("/users/register", body)
             .then(() => {
               this.$router.push("/login");
             })
             .catch(error => {
-              this.$alert("Something has wrong", "danger");
-              console.log("error");
+              this.$bus.$emit("alert", "error", "Something has wrong");
+              console.log("error", error);
+            })
+            .finally(() => {
+              this.loading.submit = false;
             });
         }
       });

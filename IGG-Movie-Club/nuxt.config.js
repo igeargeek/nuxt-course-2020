@@ -32,6 +32,8 @@ export default {
   */
   plugins: [
     { src: '~/plugins/veeValidate', ssr: false },
+    '~/plugins/axios',
+    '~/plugins/bus'
   ],
   /*
   ** Nuxt.js dev-modules

@@ -4,6 +4,7 @@
       v-model="innerValue"
       :label="label"
       :error-messages="errors"
+      :type="type"
     ></v-text-field>
   </ValidationProvider>
 </template>
@@ -32,9 +33,9 @@ export default {
       type: String,
       default: ""
     },
-    placeholder: {
+    type: {
       type: String,
-      default: ""
+      default: "input"
     }
   },
   data() {
