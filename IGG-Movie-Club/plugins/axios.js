@@ -3,7 +3,7 @@ export default function ({ $axios, redirect }, inject) {
   const api = $axios.create({
     headers: {
       common: {
-        Accept: 'application/json'
+        'Accept': 'application/json, text/plain, */*'
       }
     }
   })
