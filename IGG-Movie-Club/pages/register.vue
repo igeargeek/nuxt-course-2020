@@ -28,7 +28,9 @@
                 <v-card-actions>
                   <v-spacer />
                   <v-col cols="6" class="text-sm-left">
-                    <v-btn color="primary" outlined @click="$router.push('/login')">Login</v-btn>
+                    <nuxt-link to="/login">
+                      <v-btn color="primary" outlined>Login</v-btn>
+                    </nuxt-link>
                   </v-col>
                   <v-col cols="6" class="text-sm-right">
                     <SaveButton :loading="loading.submit">Register</SaveButton>

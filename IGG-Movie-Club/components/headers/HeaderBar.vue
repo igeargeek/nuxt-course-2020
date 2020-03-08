@@ -8,11 +8,23 @@
       <span class="pr-5">{{ $store.state.name }}</span>
 
       <template v-if="$store.state.name">
-        <v-btn color="primary">Logout</v-btn>
+        <LogoutButton />
       </template>
       <template v-else>
-        <v-btn color="primary" @click="$router.push('/login')">Login</v-btn>
+        <nuxt-link to="/login">
+          <v-btn color="primary">Login</v-btn>
+        </nuxt-link>
       </template>
     </v-app-bar>
   </div>
 </template>
+
+<script>
+import { LogoutButton } from "~/components/buttons";
+
+export default {
+  components: {
+    LogoutButton
+  }
+};
+</script>

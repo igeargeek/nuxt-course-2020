@@ -27,7 +27,9 @@
                 <v-card-actions>
                   <v-spacer />
                   <v-col cols="6" class="text-sm-left">
-                    <v-btn color="primary" outlined @click="$router.push('/register')">Register</v-btn>
+                    <nuxt-link to="/register">
+                      <v-btn color="primary" outlined>Register</v-btn>
+                    </nuxt-link>
                   </v-col>
                   <v-col cols="6" class="text-sm-right">
                     <SaveButton :loading="loading.submit">Login</SaveButton>
@@ -68,15 +70,14 @@ export default {
         if (success) {
           this.loading.submit = true;
           const body = {
-            name: this.name,
             username: this.username,
             password: this.password
           };
           this.$api
             .post("/users/login", body)
             .then(res => {
-              const { data } = res.data
-              localStorage.setItem('accessToken', data.token)
+              const { data } = res;
+              localStorage.setItem("accessToken", data.access_token);
               this.$router.push("/");
             })
             .catch(error => {

@@ -16,13 +16,20 @@ export default {
     HeaderBar
   },
   mounted() {
-    this.getUserInfo();
+    if (localStorage.getItem("accessToken")) {
+      this.getUserInfo();
+    }
   },
   methods: {
     getUserInfo() {
-      this.$api.get("/users/payload").then(res => {
-        this.$store.commit("user", res.data.data);
-      });
+      this.$api
+        .get("/users/payload")
+        .then(res => {
+          this.$store.commit("user", res.data.data);
+        })
+        .catch(() => {
+          localStorage.setItem("accessToken", "");
+        });
     }
   }
 };

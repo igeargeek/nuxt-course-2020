@@ -9,7 +9,7 @@ export default function ({ $axios, redirect }, inject) {
   })
 
   // Set baseURL to something different
-  api.setBaseURL('http://localhost:3001')
+  api.setBaseURL('https://nuxt-course-api.igeargeek.com')
   if (process.client) {
     api.setToken(localStorage.getItem('accessToken'), 'Bearer')
   }
