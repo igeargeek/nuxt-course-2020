@@ -33,7 +33,8 @@ export default {
   plugins: [
     { src: '~/plugins/veeValidate', ssr: false },
     '~/plugins/axios',
-    '~/plugins/bus'
+    '~/plugins/bus',
+    `~/plugins/vueYoutube`
   ],
   /*
   ** Nuxt.js dev-modules
@@ -60,6 +61,9 @@ export default {
   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    icons: {
+      iconfont: 'mdi',
+    },
     theme: {
       dark: true,
       themes: {

@@ -79,10 +79,12 @@ export default {
             .post("/users/register", body)
             .then(() => {
               this.$router.push("/login");
+              this.$bus.$emit("alert");
             })
             .catch(error => {
-              this.$bus.$emit("alert", "error", "Something has wrong");
-              console.log("error", error);
+              const { data } = error.response
+              this.$bus.$emit("alert", "error", data.message);
+              console.error("error", data);
             })
             .finally(() => {
               this.loading.submit = false;

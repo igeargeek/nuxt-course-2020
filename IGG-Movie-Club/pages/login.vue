@@ -81,7 +81,7 @@ export default {
               this.$router.push("/");
             })
             .catch(error => {
-              this.$bus.$emit("alert", "error", "Something has wrong");
+              this.$bus.$emit("alert", "error", "username or password invalid");
               console.log("error", error);
             })
             .finally(() => {

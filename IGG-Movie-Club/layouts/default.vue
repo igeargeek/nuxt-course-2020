@@ -25,10 +25,10 @@ export default {
       this.$api
         .get("/users/payload")
         .then(res => {
-          this.$store.commit("user", res.data.data);
+          this.$store.commit("user", res.data);
         })
-        .catch(() => {
-          localStorage.setItem("accessToken", "");
+        .catch((error) => {
+          console.error('res',error)
         });
     }
   }
