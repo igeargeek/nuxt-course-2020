@@ -7,6 +7,12 @@
 
       <span class="pr-5">{{ $store.state.name }}</span>
 
+      <span  class="pr-5" >
+        <nuxt-link to="/history">
+          <v-btn color="primary">My reservation list</v-btn>
+        </nuxt-link>
+      </span>
+
       <template v-if="$store.state.name">
         <LogoutButton />
       </template>
