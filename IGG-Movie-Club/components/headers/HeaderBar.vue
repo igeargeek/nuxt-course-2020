@@ -1,13 +1,17 @@
 <template>
   <div>
     <v-app-bar>
-      <v-toolbar-title>IGG Movie Club</v-toolbar-title>
+      <v-toolbar-title>
+        <nuxt-link to="/">
+          <a style="color: white;">IGG Movie Club</a>
+        </nuxt-link>
+      </v-toolbar-title>
 
       <v-spacer />
 
       <span class="pr-5">{{ $store.state.name }}</span>
 
-      <span  class="pr-5" >
+      <span class="pr-5">
         <nuxt-link to="/history">
           <v-btn color="primary">My reservation list</v-btn>
         </nuxt-link>
