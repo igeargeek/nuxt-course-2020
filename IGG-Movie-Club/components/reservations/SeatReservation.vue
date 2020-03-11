@@ -3,7 +3,12 @@
     <p class="text-center">Screen</p>
     <v-row v-for="(row,index) in seats.rows" :key="index">
       <v-col cols="1" v-for="(col, indexCol) in seats.cols" :key="indexCol">
-        <v-checkbox v-model="selected" :label="`${col}${row}`" :value="`${col}${row}`"></v-checkbox>
+        <v-checkbox
+          :disabled="reserved(`${col}${row}`)"
+          v-model="selected"
+          :label="`${col}${row}`"
+          :value="`${col}${row}`"
+        ></v-checkbox>
       </v-col>
     </v-row>
   </div>
@@ -38,12 +43,13 @@ export default {
       this.$emit("input", val);
     }
   },
-  beforeMount() {
-    this.handleMovies();
-  },
   methods: {
-    handleMovies() {
-    //   this.$api.get("");
+    reserved(seatNo) {
+      const isReserved = this.reservedSeat.find(number => number === seatNo);
+      if (isReserved) {
+        return true;
+      }
+      return false;
     }
   }
 };

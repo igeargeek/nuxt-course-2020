@@ -7,7 +7,7 @@ export default {
   methods: {
     logout() {
       localStorage.setItem("accessToken", "");
-      location.reload();
+      this.$router.push("/login");
     }
   }
 };

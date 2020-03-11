@@ -22,7 +22,7 @@
     </v-row>
     <v-row class="mt-10">
       <v-col cols="12" class="text-center">
-        <ConfirmButton @click="reserve">Reserve</ConfirmButton>
+        <ConfirmButton :loading="loading.submit" @click="reserve">Reserve</ConfirmButton>
       </v-col>
     </v-row>
   </Container>
@@ -58,7 +58,10 @@ export default {
   },
   data() {
     return {
-      seleted: []
+      seleted: [],
+      loading: {
+        submit: false
+      }
     };
   },
   computed: {
@@ -68,7 +71,29 @@ export default {
   },
   methods: {
     reserve() {
-      console.log("seleted", seleted);
+      if (this.seleted.length > 0) {
+        this.loading.submit = true;
+        const body = {
+          seatNo: this.seleted
+        };
+        this.$api
+          .post(`/movies/${this.id}/_reseve`, body)
+          .then(res => {
+            this.$bus.$emit("alert");
+            const { id } = res.data;
+            this.$router.push(`/reservation-detail/${id}`);
+          })
+          .catch(error => {
+            const { data } = error.response;
+            this.$bus.$emit("alert", "error", data.message);
+            console.error("Reserve Error:", error);
+          })
+          .finally(() => {
+            this.loading.submit = false;
+          });
+      } else {
+        this.$bus.$emit("alert", "error", "Please selecte seat");
+      }
     }
   }
 };

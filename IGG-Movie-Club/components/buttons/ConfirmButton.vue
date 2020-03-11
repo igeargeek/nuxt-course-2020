@@ -40,18 +40,17 @@ export default {
   },
   data() {
     return {
-      btLoading: this.loading,
       dialog: false
     };
   },
-  watch: {
-    loading(val) {
-      this.btLoading = val;
+  computed: {
+    btLoading() {
+      return this.loading;
     }
   },
   methods: {
     confirm() {
-      dialog = false;
+      this.dialog = false;
       this.$emit("click");
     }
   }
