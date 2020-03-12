@@ -23,6 +23,12 @@ export default {
   components: {
     Container
   },
+  head() {
+    return {
+      title: 'Reserveation detail',
+      meta: [{ name: "description", content: 'Reserveation detail' }]
+    };
+  },
   data() {
     return {
       movie: {

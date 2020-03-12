@@ -56,6 +56,12 @@ export default {
     ValidationObserver,
     SaveButton
   },
+  head() {
+    return {
+      title: "Login",
+      meta: [{ name: "description", content: "Login page" }]
+    };
+  },
   data() {
     return {
       loading: { submit: false },
