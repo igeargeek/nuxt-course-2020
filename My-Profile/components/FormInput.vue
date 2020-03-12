@@ -1,0 +1,60 @@
+<template>
+    <div>
+        <v-form>
+            <v-row>
+                <v-col>
+                    <inputComponent v-model="fullName" placeholder="Enter your name" isRequired></inputComponent>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <inputComponent v-model="email" placeholder="Enter your email" isRequired></inputComponent>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <inputComponent v-model="description" placeholder="Enter description" isRequired></inputComponent>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <buttonComponent @onClick="onSubmit" text="Submit" color="primary"></buttonComponent>
+                    <buttonComponent  @onClick="onClear" text="Clear" color="error"></buttonComponent>
+                </v-col>
+            </v-row>
+        </v-form>
+    </div>
+</template>
+<script>
+import InputComponent from './InputComponent.vue'
+import ButtonComponent from './ButtonComponent.vue'
+
+export default {
+    name: 'FormInput',
+    components: {
+        InputComponent,
+        ButtonComponent
+    },
+    data() {
+        return {
+            fullName: '',
+            email: '',
+            description: ''
+        }
+    },
+    methods: {
+        onClear() {
+            this.fullName = ''
+            this.email = ''
+            this.description = ''
+        },
+        onSubmit() {
+        this.$emit('submitForm', {
+            fullname: this.fullName,
+            email: this.email,
+            description: this.description
+        }) 
+        }
+    }
+}
+</script>

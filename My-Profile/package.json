@@ -1,0 +1,19 @@
+{
+  "name": "My-Profile",
+  "version": "1.0.0",
+  "description": "My legendary Nuxt.js project",
+  "author": "Arthorn kittinukul",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}
