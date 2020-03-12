@@ -19,7 +19,7 @@ export default function ({ $axios, redirect }, inject) {
 
   api.onError((errorResponse) => {
     const errorCode = parseInt(errorResponse.response.status, 10)
-    if (errorCode === 401) {
+    if (errorCode === 401 && process.client) {
       localStorage.removeItem('accessToken')
     }
     throw errorResponse

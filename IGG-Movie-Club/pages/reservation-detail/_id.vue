@@ -8,7 +8,7 @@
         <h2>Introduction</h2>
         <p class="mt-5">{{movie.description}}</p>
         <h2>Seat reserved</h2>
-        <p>Amount : {{seatNo.length}} unit</p>
+        <p>Amount : {{seatNo.length}} seats</p>
         <p>Seat number : {{seatNo}}</p>
         <nuxt-link to="/">Back to home page</nuxt-link>
       </v-col>

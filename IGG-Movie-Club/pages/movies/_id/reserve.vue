@@ -51,7 +51,7 @@ export default {
         description: data.description,
         imageUrl: data.posterUrl,
         youtubeUrl: data.youtubeUrl,
-        reservedSeat: data.reservedSeat
+        reservedSeat: data.reservedSeat || []
       };
     });
     return movie;
