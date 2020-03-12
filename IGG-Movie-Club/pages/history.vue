@@ -45,6 +45,12 @@ export default {
   components: {
     Container
   },
+  head() {
+    return {
+      title: "Histories",
+      meta: [{ name: "description", content: "Histories page" }]
+    };
+  },
   data() {
     return {
       reservations: []

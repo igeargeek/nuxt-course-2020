@@ -1,5 +1,5 @@
 <template>
-  <Container title="Home page">
+  <Container title="Movie list">
     <v-row>
       <v-col cols="12" sm="4" v-for="(item, index) in movies" :key="index">
         <MovieCard :id="item.id" :name="item.name" :image-url="item.imageUrl" />
@@ -28,6 +28,12 @@ export default {
       }));
     });
     return { movies };
+  },
+  head() {
+    return {
+      title: "Movie list",
+      meta: [{ name: "description", content: "Movie list" }]
+    };
   }
 };
 </script>

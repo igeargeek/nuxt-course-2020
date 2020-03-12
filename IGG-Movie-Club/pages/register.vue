@@ -57,6 +57,12 @@ export default {
     ValidationObserver,
     SaveButton
   },
+  head() {
+    return {
+      title: "Register",
+      meta: [{ name: "description", content: "Register page" }]
+    };
+  },
   data() {
     return {
       loading: { submit: false },

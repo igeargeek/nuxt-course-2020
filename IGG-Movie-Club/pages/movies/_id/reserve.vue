@@ -56,6 +56,12 @@ export default {
     });
     return movie;
   },
+  head() {
+    return {
+      title: `Seat reservation : ${this.name}`,
+      meta: [{ name: "description", content: this.description }]
+    };
+  },
   data() {
     return {
       seleted: [],
