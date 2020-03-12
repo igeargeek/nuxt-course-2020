@@ -34,7 +34,8 @@ export default {
     { src: '~/plugins/veeValidate', ssr: false },
     '~/plugins/axios',
     '~/plugins/bus',
-    `~/plugins/vueYoutube`
+    `~/plugins/vueYoutube`,
+    `~/plugins/dateTime`
   ],
   /*
   ** Nuxt.js dev-modules

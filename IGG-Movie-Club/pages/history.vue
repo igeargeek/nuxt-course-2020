@@ -21,7 +21,7 @@
           </v-row>
           <v-row>
             <v-col cols="3">Reseration date:</v-col>
-            <v-col cols="9">{{ displayDate }}</v-col>
+            <v-col cols="9">{{ $dateTime(reservation.CreatedAt) }}</v-col>
           </v-row>
           <hr />
           <v-row>
@@ -55,21 +55,6 @@ export default {
     return {
       reservations: []
     };
-  },
-  computed: {
-    displayDate() {
-      var date = this.reservations.reduce((accumulate, data) => {
-        return data.UpdatedAt;
-      });
-
-      return new Date(date).toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric"
-      });
-    }
   },
   mounted() {
     this.getHistories();
